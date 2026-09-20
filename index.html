@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rute komuter sepeda motor dari sebuah hunian di Depok menuju tempat kerja di Kebon Jeruk, Jakarta Barat.">
+  <title>35,8 KM untuk Bekerja — Peta Komuter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside id="panel" aria-label="Informasi perjalanan">
+    <header class="publication-header">
+      <div class="header-text">
+        <h1>Jarak Tempuh Rumah-Kantor dengan Sepeda Motor</h1>
+        <p class="header-deck">Simulasi jarak yang ditempuh oleh pesepeda motor dari wilayah Depok ketika menuju ke kantor di wilayah Kebon Jeruk, Jakarta Barat. Jarak yang tertera ini memperhitungkan rute jalan non-tol, dan mengabaikan keberadaan lampu lalu lintas.</p>
+        <p class="source-byline">Sumber: OSM, Diolah: DIV/SPW/EKI</p>
+      </div>
+      <button id="detail" class="detail-button" aria-expanded="false" aria-controls="more">Detail</button>
+    </header>
+
+    <div class="panel-scroll">
+      <section id="hud" aria-label="Jarak perjalanan">
+
+        <div class="stats" aria-label="Ringkasan perjalanan">
+          <article class="stat">
+            <div class="k">Sekali jalan</div>
+            <div class="v"><span>35,8</span> <span class="u">km</span></div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </article>
+          <article class="stat">
+            <div class="k">Pergi-Pulang</div>
+            <div class="v"><span>71,6</span> <span class="u">km/hari</span></div>
+          </article>
+        </div>
+
+        <div id="overviewBlock">
+          <h3>Estimasi Jarak per Segmen</h3>
+          <div id="overview" role="list" aria-label="Enam segmen rute"></div>
+          <div class="hint">Pilih segmen untuk melihat bagian rutenya.</div>
+        </div>
+      </section>
+
+      <section id="more" aria-label="Detail rute">
+        <div class="sheetbar">
+          <span>Detail rute</span>
+          <button id="sheetClose" aria-label="Tutup detail">×</button>
+        </div>
+        <div class="sheetscroll">
+          <div class="route-list" id="routeList" aria-label="Segmen rute"></div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <span>© OpenStreetMap contributors · OSRM</span>
+      <span>Gunakan aplikasi navigasi untuk perjalanan aktual.</span>
+    </footer>
+  </aside>
+
+  <main id="map" class="context-mode" aria-label="Peta rute realistis dari Depok ke Jakarta Barat dengan Sepeda Motor">
+    <div class="map-toolbar" aria-label="Kontrol tampilan peta">
+      <div class="seg single" aria-label="Lapisan peta aktif">
+        <span class="mode-label">Rute</span>
+      </div>
+    </div>
+    <svg id="mapSvg" viewBox="180 135 390 635" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="mapTitle mapDesc">
+      <title id="mapTitle">Rute motor dari Depok ke Kebon Jeruk</title>
+      <desc id="mapDesc">Rute jalan nyata berbasis OpenStreetMap sepanjang sekitar 35,8 kilometer dari Depok ke Jakarta Barat.</desc>
+      <image class="basemap" href="osm-basemap.png" x="0" y="0" width="768" height="768" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></image>
+      <rect class="map-wash" x="0" y="0" width="768" height="768"></rect>
+      <g id="mapContext" aria-hidden="true"></g>
+      <g id="distanceTicks" aria-hidden="true"></g>
+      <path id="routeShadow" class="route-shadow"></path>
+      <path id="routeLine" class="route-line"></path>
+      <g id="routeMarkers"></g>
+      <g id="endpoints"></g>
+    </svg>
+    <div class="map-caption">Rute OSM · proksi motor non-tol · 36,03 km terukur</div>
+    <div class="legend" id="legend">
+      <strong>LEGENDA</strong>
+      <span><i class="legend-route"></i> Rute</span>
+      <span><i class="legend-origin"></i> Rumah</span>
+      <span><i class="legend-work"></i> Kantor</span>
+    </div>
+    <div class="scale-control"><span class="scale-line"></span><b>5 km</b></div>
+    <div class="north-arrow" aria-label="Arah utara"><b>N</b><span>↑</span></div>
+    <div id="scrim" hidden></div>
+  </main>
+
+  <script src="route-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
